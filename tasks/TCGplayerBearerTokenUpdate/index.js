@@ -19,7 +19,7 @@ const task = async function() {
 		method: 'POST',
 		headers: config.headers,
 		body: new URLSearchParams( config.params ),
-	} );
+	} ).then( res => res.json() );
 	
 	const bearerToken = response.access_token;
 
