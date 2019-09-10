@@ -25,6 +25,8 @@ bot.once( "ready", () => {
 		type: "WATCHING",
 	} );
 
+	const channel = bot.channels.get( config.channelID );
+
 	const tasks = require( "./tasks" )( channel ).start();
 } );
 
