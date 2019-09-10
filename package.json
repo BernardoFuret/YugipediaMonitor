@@ -1,0 +1,21 @@
+{
+  "name": "yugipediamonitor",
+  "version": "1.0.0",
+  "description": "Bot to monitor server side tasks.",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "node-schedule": "^1.3.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BernardoFuret/YugipediaMonitor.git"
+  },
+  "author": "Bernardo Furet",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/BernardoFuret/YugipediaMonitor/issues"
+  },
+  "homepage": "https://github.com/BernardoFuret/YugipediaMonitor#readme"
+}
