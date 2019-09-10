@@ -1,0 +1,4 @@
+{
+	"name": "DemoTask",
+	"schedule": "*/1 * * * *"
+}

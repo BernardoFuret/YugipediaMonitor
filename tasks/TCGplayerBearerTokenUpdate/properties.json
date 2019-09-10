@@ -1,0 +1,4 @@
+{
+	"name": "TCGplayerBearerTokenUpdate",
+	"schedule": "0 */312 * * *"
+}
