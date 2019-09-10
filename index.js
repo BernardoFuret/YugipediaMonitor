@@ -1,6 +1,6 @@
 "use strict";
 
-const Discord = require( "Discord.js" );
+const Discord = require( "discord.js" );
 
 const Logger = require( "./Logger.js" );
 
