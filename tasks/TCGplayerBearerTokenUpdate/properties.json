@@ -1,4 +1,4 @@
 {
 	"name": "TCGplayerBearerTokenUpdate",
-	"schedule": "0 */312 * * *"
+	"schedule": "30 22 1,12,23 * *"
 }
