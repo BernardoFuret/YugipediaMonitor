@@ -1,8 +1,8 @@
 module.exports = channel => ( {
 	tasks: [
-		"DemoTask"
-//		"AdsTxtUpdate",
-//		"TCGplayerBearerTokenUpdate",
+//		"DemoTask"
+		"AdsTxtUpdate",
+		"TCGplayerBearerTokenUpdate",
 	],
 
 	start() {
