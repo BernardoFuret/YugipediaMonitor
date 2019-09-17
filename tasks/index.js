@@ -1,11 +1,11 @@
 module.exports = channel => ( {
 	tasks: [
-//		require( "./DemoTask" )( channel ),
-		require( "./AdsTxtUpdate" )( channel ),
-		require( "./TCGplayerBearerTokenUpdate" )( channel ),
+		"DemoTask"
+//		"AdsTxtUpdate",
+//		"TCGplayerBearerTokenUpdate",
 	],
 
 	start() {
-		this.tasks.forEach( task => task.start() );
+		this.tasks.forEach( task => require( `./${task}` )( channel ).start() );
 	},
 } );
