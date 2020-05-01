@@ -1,4 +1,6 @@
-"use strict";
+/**
+ * YugipediaMonitor
+ */
 
 const Discord = require( "discord.js" );
 
@@ -27,7 +29,7 @@ bot.once( "ready", () => {
 
 	const channel = bot.channels.get( config.channelID );
 
-	const tasks = require( "./tasks" )( channel ).start();
+	const tasks = require( "./tasks" )( channel );
 } );
 
 // tagged: message.mentions.users.get( bot.user.id );
