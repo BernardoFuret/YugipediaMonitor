@@ -1,0 +1,4 @@
+{
+	"name": "GizmekUkaTargetsUpdate",
+	"schedule": "59 23 */2 * *"
+}
