@@ -31,7 +31,7 @@ const task = async function() {
 				this.logger.warn( "Error reading", config.tcgplayerScriptPath, err );
 			} else {
 				const updatedContent = content.replace(
-					/(?<=^[ \t]+var bearerToken[ \t]+=[ \t]+')(.*?)';(.*?)$/gm,
+					/(?<=^[ \t]*\$tcgplayerConfigBearerToken[ \t]+=[ \t]+')(.*?)';(.*?)$/gm,
 					() => `${bearerToken}'; // Last updated at: ${new Date().toISOString()}`
 				);
 
