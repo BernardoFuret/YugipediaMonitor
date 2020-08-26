@@ -1,4 +1,4 @@
 {
 	"name": "AdsTxtUpdate",
-	"schedule": "59 23 * * 1,4"
+	"schedule": "59 23 */2 * *"
 }
