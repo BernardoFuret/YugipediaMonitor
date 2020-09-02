@@ -19,7 +19,12 @@ const task = async function() {
 
 	const adsTextContent = await Promise.all( adsTextRequests );
 
-	return fsp.writeFile( 'adsTxtFile', adsTextContent.join( '\n\n# # # # # #\n\n' ) )
+	const content = [
+		`# Last updated at: ${new Date().toISOString()}`,
+		...adsTextContent
+	];
+
+	return fsp.writeFile( adsTxtFile, content.join( '\n\n# # # # # #\n\n' ) )
 		.then( () => this.logger.info( 'Updated with success!' ) )
 		.catch( this.logger.error.bind( this.logger, 'Error updating ads.txt:' ) )
 	;
@@ -29,4 +34,4 @@ module.exports = channel => new ScheduledTask(
 	props.schedule,
 	new DiscordLogger( props.name, channel ),
 	task,
-);
+).exec();
