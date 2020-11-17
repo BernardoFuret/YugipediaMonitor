@@ -12,7 +12,7 @@ const ScheduledTask = require( '../ScheduledTask.js' );
 
 const props = require( './properties.json' );
 
-const { adsUrls, adsTxtFile } = require( './config.json' );
+const { adsUrls, adsTxtFile, appendText } = require( './config.json' );
 
 const task = async function() {
 	const adsTextRequests = adsUrls.map( url => fetch( url ).then( r => r.text() ) );
@@ -21,7 +21,8 @@ const task = async function() {
 
 	const content = [
 		`# Last updated at: ${new Date().toISOString()}`,
-		...adsTextContent
+		...adsTextContent,
+		...appendText,
 	];
 
 	return fsp.writeFile( adsTxtFile, content.join( '\n\n# # # # # #\n\n' ) )
