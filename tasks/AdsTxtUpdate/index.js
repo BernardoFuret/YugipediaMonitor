@@ -4,6 +4,8 @@
 
 const { promises: fsp } = require( 'fs' );
 
+const path = require( 'path' );
+
 const fetch = require( 'node-fetch' );
 
 const DiscordLogger = require( '../../DiscordLogger.js' );
@@ -12,9 +14,15 @@ const ScheduledTask = require( '../ScheduledTask.js' );
 
 const props = require( './properties.json' );
 
-const { adsUrls, adsTxtFile, appendText } = require( './config.json' );
+async function readJsonFile( file ) {
+	return fsp.readFile( path.join( __dirname, file ) )
+		.then( JSON.parse )
+	;
+}
 
 const task = async function() {
+	const { adsUrls, adsTxtFile, appendText } = await readJsonFile( './config.json' );
+
 	const adsTextRequests = adsUrls.map( url => fetch( url ).then( r => r.text() ) );
 
 	const adsTextContent = await Promise.all( adsTextRequests );
@@ -23,11 +31,11 @@ const task = async function() {
 		`# Last updated at: ${new Date().toISOString()}`,
 		...adsTextContent,
 		...appendText,
-	];
+	].join( '\n\n# # # # # #\n\n' );
 
-	return fsp.writeFile( adsTxtFile, content.join( '\n\n# # # # # #\n\n' ) )
+	return fsp.writeFile( adsTxtFile, content )
 		.then( () => this.logger.info( 'Updated with success!' ) )
-		.catch( this.logger.error.bind( this.logger, 'Error updating ads.txt:' ) )
+		.catch( e => this.logger.error( 'Error updating ads.txt:', e ) )
 	;
 };
 
