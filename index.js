@@ -29,6 +29,8 @@ bot.once( "ready", () => {
 
 	const channel = bot.channels.get( config.channelID );
 
+	channel.send( `Logged in at ${new Date().toISOString()}` );
+
 	const tasks = require( "./tasks" )( channel );
 } );
 
@@ -52,7 +54,15 @@ bot.on( "warn", logger.warn.bind( logger ) );
 /**
  * `error` event handler.
  */
-bot.on( "error", logger.error.bind( logger ) );
+bot.on( "error", error => {
+	logger.error( error );
+
+	if ( /ECONNRESET/.test( error.message ) ) {
+		logger.info( "Restarting" );
+
+		bot.login( config.token );
+	}
+} );
 
 /**
  * Bot login.
