@@ -51,4 +51,4 @@ module.exports = channel => new ScheduledTask(
 	props.schedule,
 	new DiscordLogger( props.name, channel ),
 	task,
-);
+).exec();
