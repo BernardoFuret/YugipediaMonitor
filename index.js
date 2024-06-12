@@ -57,7 +57,7 @@ bot.on( "warn", logger.warn.bind( logger ) );
 bot.on( "error", error => {
 	logger.error( error );
 
-	if ( /ECONNRESET/.test( error.message ) ) {
+	if ( /ECONNRESET|522|520/.test( error.message ) ) {
 		logger.info( "Restarting" );
 
 		bot.login( config.token );
